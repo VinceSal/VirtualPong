@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B72EA2329B27BBE00EBE324 /* VirtualPongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA2229B27BBE00EBE324 /* VirtualPongApp.swift */; };
+		8B72EA2529B27BBE00EBE324 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA2429B27BBE00EBE324 /* ContentView.swift */; };
+		8B72EA2729B27BBF00EBE324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B72EA2629B27BBF00EBE324 /* Assets.xcassets */; };
+		8B72EA2A29B27BBF00EBE324 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B72EA2929B27BBF00EBE324 /* Preview Assets.xcassets */; };
+		8B72EA3029B27BC000EBE324 /* VirtualPong Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8B72EA2F29B27BC000EBE324 /* VirtualPong Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8B72EA3529B27BC000EBE324 /* VirtualPongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA3429B27BC000EBE324 /* VirtualPongApp.swift */; };
+		8B72EA3729B27BC000EBE324 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA3629B27BC000EBE324 /* ContentView.swift */; };
+		8B72EA3929B27BC100EBE324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B72EA3829B27BC100EBE324 /* Assets.xcassets */; };
+		8B72EA3C29B27BC100EBE324 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B72EA3B29B27BC100EBE324 /* Preview Assets.xcassets */; };
+		8B72EA4829B27C7000EBE324 /* ViewModelPong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA4729B27C7000EBE324 /* ViewModelPong.swift */; };
+		8B72EA4929B27C7000EBE324 /* ViewModelPong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA4729B27C7000EBE324 /* ViewModelPong.swift */; };
+		8B72EA4B29B27C8500EBE324 /* UserConnectivityPong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA4A29B27C8500EBE324 /* UserConnectivityPong.swift */; };
+		8B72EA4C29B27C8500EBE324 /* UserConnectivityPong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA4A29B27C8500EBE324 /* UserConnectivityPong.swift */; };
+		8B72EA4E29B27CA300EBE324 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA4D29B27CA300EBE324 /* Buttons.swift */; };
+		8B72EA5129B27CBD00EBE324 /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA5029B27CBD00EBE324 /* ConnectView.swift */; };
+		8B72EA5329B27CCB00EBE324 /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA5229B27CCB00EBE324 /* DeviceView.swift */; };
+		8B72EA5529B27CD300EBE324 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA5429B27CD300EBE324 /* MatchView.swift */; };
+		8B72EA5729B27CDD00EBE324 /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA5629B27CDD00EBE324 /* TrainingView.swift */; };
+		8B72EA5B29B27E8700EBE324 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA5A29B27E8700EBE324 /* MatchView.swift */; };
+		8B72EA5D29B27E9400EBE324 /* RilevamentoColpo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA5C29B27E9400EBE324 /* RilevamentoColpo.swift */; };
+		8B72EA5F29B27F5500EBE324 /* Prova Pong 4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA5E29B27F5500EBE324 /* Prova Pong 4.mlmodel */; };
+		8B72EA6229B27FFE00EBE324 /* ParthenoKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B72EA6129B27FFE00EBE324 /* ParthenoKit.xcframework */; };
+		8B72EA6329B27FFE00EBE324 /* ParthenoKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B72EA6129B27FFE00EBE324 /* ParthenoKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B72EA6629B2808900EBE324 /* Suoni in Resources */ = {isa = PBXBuildFile; fileRef = 8B72EA6529B2808800EBE324 /* Suoni */; };
+		8B72EA6729B2808900EBE324 /* Suoni in Resources */ = {isa = PBXBuildFile; fileRef = 8B72EA6529B2808800EBE324 /* Suoni */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8B72EA3129B27BC000EBE324 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B72EA1729B27BBE00EBE324 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B72EA2E29B27BC000EBE324;
+			remoteInfo = "VirtualPong Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8B72EA4229B27BC100EBE324 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				8B72EA3029B27BC000EBE324 /* VirtualPong Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B72EA6429B27FFE00EBE324 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8B72EA6329B27FFE00EBE324 /* ParthenoKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8B72EA1F29B27BBE00EBE324 /* VirtualPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B72EA2229B27BBE00EBE324 /* VirtualPongApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPongApp.swift; sourceTree = "<group>"; };
+		8B72EA2429B27BBE00EBE324 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8B72EA2629B27BBF00EBE324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8B72EA2929B27BBF00EBE324 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8B72EA2F29B27BC000EBE324 /* VirtualPong Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VirtualPong Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B72EA3429B27BC000EBE324 /* VirtualPongApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPongApp.swift; sourceTree = "<group>"; };
+		8B72EA3629B27BC000EBE324 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8B72EA3829B27BC100EBE324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8B72EA3B29B27BC100EBE324 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8B72EA4729B27C7000EBE324 /* ViewModelPong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelPong.swift; sourceTree = "<group>"; };
+		8B72EA4A29B27C8500EBE324 /* UserConnectivityPong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConnectivityPong.swift; sourceTree = "<group>"; };
+		8B72EA4D29B27CA300EBE324 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		8B72EA5029B27CBD00EBE324 /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
+		8B72EA5229B27CCB00EBE324 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
+		8B72EA5429B27CD300EBE324 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		8B72EA5629B27CDD00EBE324 /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
+		8B72EA5A29B27E8700EBE324 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		8B72EA5C29B27E9400EBE324 /* RilevamentoColpo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RilevamentoColpo.swift; sourceTree = "<group>"; };
+		8B72EA5E29B27F5500EBE324 /* Prova Pong 4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Prova Pong 4.mlmodel"; sourceTree = "<group>"; };
+		8B72EA6129B27FFE00EBE324 /* ParthenoKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ParthenoKit.xcframework; sourceTree = "<group>"; };
+		8B72EA6529B2808800EBE324 /* Suoni */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Suoni; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8B72EA1C29B27BBE00EBE324 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B72EA6229B27FFE00EBE324 /* ParthenoKit.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B72EA2C29B27BC000EBE324 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8B72EA1629B27BBE00EBE324 = {
+			isa = PBXGroup;
+			children = (
+				8B72EA6529B2808800EBE324 /* Suoni */,
+				8B72EA4629B27C4F00EBE324 /* Connectivity */,
+				8B72EA2129B27BBE00EBE324 /* VirtualPong */,
+				8B72EA3329B27BC000EBE324 /* VirtualPong Watch App */,
+				8B72EA2029B27BBE00EBE324 /* Products */,
+				8B72EA6029B27FFE00EBE324 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8B72EA2029B27BBE00EBE324 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B72EA1F29B27BBE00EBE324 /* VirtualPong.app */,
+				8B72EA2F29B27BC000EBE324 /* VirtualPong Watch App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B72EA2129B27BBE00EBE324 /* VirtualPong */ = {
+			isa = PBXGroup;
+			children = (
+				8B72EA2229B27BBE00EBE324 /* VirtualPongApp.swift */,
+				8B72EA5229B27CCB00EBE324 /* DeviceView.swift */,
+				8B72EA5429B27CD300EBE324 /* MatchView.swift */,
+				8B72EA5629B27CDD00EBE324 /* TrainingView.swift */,
+				8B72EA2429B27BBE00EBE324 /* ContentView.swift */,
+				8B72EA5029B27CBD00EBE324 /* ConnectView.swift */,
+				8B72EA4D29B27CA300EBE324 /* Buttons.swift */,
+				8B72EA2629B27BBF00EBE324 /* Assets.xcassets */,
+				8B72EA2829B27BBF00EBE324 /* Preview Content */,
+			);
+			path = VirtualPong;
+			sourceTree = "<group>";
+		};
+		8B72EA2829B27BBF00EBE324 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8B72EA2929B27BBF00EBE324 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8B72EA3329B27BC000EBE324 /* VirtualPong Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				8B72EA3429B27BC000EBE324 /* VirtualPongApp.swift */,
+				8B72EA5E29B27F5500EBE324 /* Prova Pong 4.mlmodel */,
+				8B72EA5A29B27E8700EBE324 /* MatchView.swift */,
+				8B72EA5C29B27E9400EBE324 /* RilevamentoColpo.swift */,
+				8B72EA3629B27BC000EBE324 /* ContentView.swift */,
+				8B72EA3829B27BC100EBE324 /* Assets.xcassets */,
+				8B72EA3A29B27BC100EBE324 /* Preview Content */,
+			);
+			path = "VirtualPong Watch App";
+			sourceTree = "<group>";
+		};
+		8B72EA3A29B27BC100EBE324 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8B72EA3B29B27BC100EBE324 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8B72EA4629B27C4F00EBE324 /* Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+				8B72EA4729B27C7000EBE324 /* ViewModelPong.swift */,
+				8B72EA4A29B27C8500EBE324 /* UserConnectivityPong.swift */,
+			);
+			path = Connectivity;
+			sourceTree = "<group>";
+		};
+		8B72EA6029B27FFE00EBE324 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B72EA6129B27FFE00EBE324 /* ParthenoKit.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8B72EA1E29B27BBE00EBE324 /* VirtualPong */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B72EA4329B27BC100EBE324 /* Build configuration list for PBXNativeTarget "VirtualPong" */;
+			buildPhases = (
+				8B72EA1B29B27BBE00EBE324 /* Sources */,
+				8B72EA1C29B27BBE00EBE324 /* Frameworks */,
+				8B72EA1D29B27BBE00EBE324 /* Resources */,
+				8B72EA4229B27BC100EBE324 /* Embed Watch Content */,
+				8B72EA6429B27FFE00EBE324 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B72EA3229B27BC000EBE324 /* PBXTargetDependency */,
+			);
+			name = VirtualPong;
+			productName = VirtualPong;
+			productReference = 8B72EA1F29B27BBE00EBE324 /* VirtualPong.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8B72EA2E29B27BC000EBE324 /* VirtualPong Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B72EA3F29B27BC100EBE324 /* Build configuration list for PBXNativeTarget "VirtualPong Watch App" */;
+			buildPhases = (
+				8B72EA2B29B27BC000EBE324 /* Sources */,
+				8B72EA2C29B27BC000EBE324 /* Frameworks */,
+				8B72EA2D29B27BC000EBE324 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VirtualPong Watch App";
+			productName = "VirtualPong Watch App";
+			productReference = 8B72EA2F29B27BC000EBE324 /* VirtualPong Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8B72EA1729B27BBE00EBE324 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					8B72EA1E29B27BBE00EBE324 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					8B72EA2E29B27BC000EBE324 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 8B72EA1A29B27BBE00EBE324 /* Build configuration list for PBXProject "VirtualPong" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8B72EA1629B27BBE00EBE324;
+			productRefGroup = 8B72EA2029B27BBE00EBE324 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8B72EA1E29B27BBE00EBE324 /* VirtualPong */,
+				8B72EA2E29B27BC000EBE324 /* VirtualPong Watch App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8B72EA1D29B27BBE00EBE324 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B72EA6629B2808900EBE324 /* Suoni in Resources */,
+				8B72EA2A29B27BBF00EBE324 /* Preview Assets.xcassets in Resources */,
+				8B72EA2729B27BBF00EBE324 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B72EA2D29B27BC000EBE324 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B72EA6729B2808900EBE324 /* Suoni in Resources */,
+				8B72EA3C29B27BC100EBE324 /* Preview Assets.xcassets in Resources */,
+				8B72EA3929B27BC100EBE324 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B72EA1B29B27BBE00EBE324 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B72EA4E29B27CA300EBE324 /* Buttons.swift in Sources */,
+				8B72EA2529B27BBE00EBE324 /* ContentView.swift in Sources */,
+				8B72EA5529B27CD300EBE324 /* MatchView.swift in Sources */,
+				8B72EA2329B27BBE00EBE324 /* VirtualPongApp.swift in Sources */,
+				8B72EA5729B27CDD00EBE324 /* TrainingView.swift in Sources */,
+				8B72EA5329B27CCB00EBE324 /* DeviceView.swift in Sources */,
+				8B72EA5129B27CBD00EBE324 /* ConnectView.swift in Sources */,
+				8B72EA4829B27C7000EBE324 /* ViewModelPong.swift in Sources */,
+				8B72EA4B29B27C8500EBE324 /* UserConnectivityPong.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B72EA2B29B27BC000EBE324 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B72EA5D29B27E9400EBE324 /* RilevamentoColpo.swift in Sources */,
+				8B72EA3729B27BC000EBE324 /* ContentView.swift in Sources */,
+				8B72EA3529B27BC000EBE324 /* VirtualPongApp.swift in Sources */,
+				8B72EA5F29B27F5500EBE324 /* Prova Pong 4.mlmodel in Sources */,
+				8B72EA4929B27C7000EBE324 /* ViewModelPong.swift in Sources */,
+				8B72EA5B29B27E8700EBE324 /* MatchView.swift in Sources */,
+				8B72EA4C29B27C8500EBE324 /* UserConnectivityPong.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8B72EA3229B27BC000EBE324 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B72EA2E29B27BC000EBE324 /* VirtualPong Watch App */;
+			targetProxy = 8B72EA3129B27BC000EBE324 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8B72EA3D29B27BC100EBE324 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8B72EA3E29B27BC100EBE324 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		8B72EA4029B27BC100EBE324 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"VirtualPong Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = Y6LL5TJ537;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = VirtualPong;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = it.crescenzoesposito.VirtualPong;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = it.crescenzoesposito.VirtualPong.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		8B72EA4129B27BC100EBE324 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"VirtualPong Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = Y6LL5TJ537;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = VirtualPong;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = it.crescenzoesposito.VirtualPong;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = it.crescenzoesposito.VirtualPong.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		8B72EA4429B27BC100EBE324 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"VirtualPong/Preview Content\"";
+				DEVELOPMENT_TEAM = Y6LL5TJ537;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = VirtualPong;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = it.crescenzoesposito.VirtualPong;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8B72EA4529B27BC100EBE324 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"VirtualPong/Preview Content\"";
+				DEVELOPMENT_TEAM = Y6LL5TJ537;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = VirtualPong;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = it.crescenzoesposito.VirtualPong;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8B72EA1A29B27BBE00EBE324 /* Build configuration list for PBXProject "VirtualPong" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B72EA3D29B27BC100EBE324 /* Debug */,
+				8B72EA3E29B27BC100EBE324 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B72EA3F29B27BC100EBE324 /* Build configuration list for PBXNativeTarget "VirtualPong Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B72EA4029B27BC100EBE324 /* Debug */,
+				8B72EA4129B27BC100EBE324 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B72EA4329B27BC100EBE324 /* Build configuration list for PBXNativeTarget "VirtualPong" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B72EA4429B27BC100EBE324 /* Debug */,
+				8B72EA4529B27BC100EBE324 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8B72EA1729B27BBE00EBE324 /* Project object */;
+}
