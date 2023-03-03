@@ -33,7 +33,7 @@ class UserConnectivityPong: NSObject, WCSessionDelegate {
     }
 
     func sendMessage(message: [String: Any]) {
-        print("Invio messaggio")
+//        print("Invio messaggio")
         session.sendMessage(message, replyHandler: nil){
             error in
             print(error.localizedDescription)
@@ -41,8 +41,8 @@ class UserConnectivityPong: NSObject, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        let value = Value(path: message["path"] as! String, value: message["value"])
-        print("Ricevo")
+        let value = Value(path: message["path"] as! String, value: message["value"]!)
+//        print("Ricevo")
         self.modelUpdate.send(value)
         print(message)
         }

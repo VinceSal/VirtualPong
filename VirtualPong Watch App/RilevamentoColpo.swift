@@ -1,14 +1,14 @@
 import CoreMotion
 import CoreML
-
+import HealthKit
+import WatchKit
 // Creazione dell'oggetto per la gestione dei dati dai sensori
     //    let motionManager = CMMotionManager()
     
 class Movimento: ObservableObject{
     var motionManager = CMMotionManager()
-    var viewModelPong: ViewModelPong = ViewModelPong()
     
-    
+
     
     
     // Creazione dell'oggetto per la predizione di attività
@@ -27,7 +27,7 @@ class Movimento: ObservableObject{
     var gyroArrayZ = [Double]()
     var start = false
     let stateIn = try! MLMultiArray(shape: [1, 1, 400], dataType: .double)
-    @Published var currentActivity: String = ""
+    @Published var currentActivity: String = "standing"
 
     
     func handleMotionUpdate(motion: CMMotionManager?) {
@@ -73,7 +73,7 @@ class Movimento: ObservableObject{
     
     // Funzione per avviare il timer di aggiornamento dei sensori
     func startMotionUpdates() {
-        
+        print("Start motion")
         for i in 0..<stateIn.count {
             stateIn[i] = 0.0
         }
@@ -132,7 +132,7 @@ class Movimento: ObservableObject{
             self.gyroArrayX = []
             self.gyroArrayY = []
             self.gyroArrayZ = []
-            
+            startMotionUpdates()
             return
         }
         let accX = avgAcceleration(accelerations: accelerationArrayX)
@@ -149,7 +149,7 @@ class Movimento: ObservableObject{
             self.gyroArrayX = []
             self.gyroArrayY = []
             self.gyroArrayZ = []
-            
+            startMotionUpdates()
             return
         }
         
@@ -191,6 +191,7 @@ class Movimento: ObservableObject{
         // Esecuzione della predizione
         let prediction = try! model.prediction(acc_x: accelerationX, acc_y: accelerationY, acc_z: accelerationZ,gyro_x: gyroX, gyro_y: gyroY, gyro_z: gyroZ, stateIn: stateIn)
         print("Prediction effettuata")
+        WKInterfaceDevice.current().play(.directionUp)
         // Aggiornamento della label con l'attività predetta
         currentActivity = prediction.label
         print(prediction.label)
@@ -230,8 +231,3 @@ class Movimento: ObservableObject{
     
 }
 
-// Struttura dati per la visualizzazione dell'attività corrente
-struct CurrentActivity: Identifiable {
-    var id = UUID()
-    var activity: String
-}

@@ -70,6 +70,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B06D79729B3A36B0092823F /* VirtualPong-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "VirtualPong-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8B06D79829B3A3730092823F /* VirtualPong Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "VirtualPong Watch App.entitlements"; sourceTree = "<group>"; };
 		8B72EA1F29B27BBE00EBE324 /* VirtualPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B72EA2229B27BBE00EBE324 /* VirtualPongApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPongApp.swift; sourceTree = "<group>"; };
 		8B72EA2429B27BBE00EBE324 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,8 @@
 		8B72EA3329B27BC000EBE324 /* VirtualPong Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				8B06D79829B3A3730092823F /* VirtualPong Watch App.entitlements */,
+				8B06D79729B3A36B0092823F /* VirtualPong-Watch-App-Info.plist */,
 				8B72EA3429B27BC000EBE324 /* VirtualPongApp.swift */,
 				8B72EA5E29B27F5500EBE324 /* Prova Pong 4.mlmodel */,
 				8B72EA5A29B27E8700EBE324 /* MatchView.swift */,
@@ -205,10 +209,10 @@
 			buildConfigurationList = 8B72EA4329B27BC100EBE324 /* Build configuration list for PBXNativeTarget "VirtualPong" */;
 			buildPhases = (
 				8B72EA1B29B27BBE00EBE324 /* Sources */,
-				8B72EA1C29B27BBE00EBE324 /* Frameworks */,
-				8B72EA1D29B27BBE00EBE324 /* Resources */,
 				8B72EA4229B27BC100EBE324 /* Embed Watch Content */,
 				8B72EA6429B27FFE00EBE324 /* Embed Frameworks */,
+				8B72EA1D29B27BBE00EBE324 /* Resources */,
+				8B72EA1C29B27BBE00EBE324 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -453,13 +457,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "VirtualPong Watch App/VirtualPong Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VirtualPong Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = Y6LL5TJ537;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "VirtualPong-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = VirtualPong;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "VirtualPong-Watch-App-Info.plist";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "VirtualPong-Watch-App-Info.plist";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = it.crescenzoesposito.VirtualPong;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -483,13 +491,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "VirtualPong Watch App/VirtualPong Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VirtualPong Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = Y6LL5TJ537;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "VirtualPong-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = VirtualPong;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "VirtualPong-Watch-App-Info.plist";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "VirtualPong-Watch-App-Info.plist";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = it.crescenzoesposito.VirtualPong;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -536,9 +548,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = it.crescenzoesposito.VirtualPong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -569,9 +584,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = it.crescenzoesposito.VirtualPong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

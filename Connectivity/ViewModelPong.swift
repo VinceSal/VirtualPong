@@ -34,10 +34,10 @@ class ViewModelPong: ObservableObject {
             DispatchQueue.main.async{
                 switch value.path {
                 case "colpo":
-                    print("Leggo colpo, nuovo valore: \(value.value as! String)")
+//                    print("Leggo colpo, nuovo valore: \(value.value as! String)")
                     self.colpo = value.value as! String
                 case "partita":
-                    print("Leggo partita, nuovo valore: \(value.value as! Bool)")
+//                    print("Leggo partita, nuovo valore: \(value.value as! Bool)")
                     self.partita = value.value as! Bool
                 case "player":
                     self.player = value.value as! Int
@@ -53,7 +53,7 @@ class ViewModelPong: ObservableObject {
     
     func sendMessage(key: String, value: Any){
         let message = ["path": key, "value": value]
-        print("richiamo send message e mando ", message)
+//        print("richiamo send message e mando ", message)
         userConnectivityPong.sendMessage(message: message)
     }
 }

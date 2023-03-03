@@ -75,9 +75,9 @@ struct MatchView: View {
                                         self.players = Int(res["players"]!)!
                                     }
                                 }
-                                        print("invio messaggio connect")
-                                        viewModelPong.sendMessage(key: "partita", value: true)
-                                    
+                                print("invio messaggio connect")
+                                viewModelPong.sendMessage(key: "partita", value: true)
+                                
                             }
                         Spacer()
                         
@@ -95,52 +95,52 @@ struct MatchView: View {
                         HeadText(text: "\n Turno: \(turno)\n \(colpo)" )
                             .onReceive(viewModelPong.$colpito, perform: { value in
                                 if value {
-                                        stopTimer()
-                                        
-                                        //Da aggiungere il random
-                                        if colpo == viewModelPong.colpo {
-                                            print("Hai sbagliato colpo errore!")
-                                        } else {
-                                            colpo = viewModelPong.colpo
-                                        }
-                                        
-                                        if maxTime > (maxTime/2)-1 && maxTime < (maxTime/2)+1  {
-                                            isRun = false
-                                            forza = "forte"
-                                            let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "forza", value:forza)
-                                            let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
-                                        }else if maxTime == 0  {
-                                            playSound(sound: "lose", type: "mp3")
-                                            isRun = false
-                                            colpo = "battuta"
-                                            let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
-                                            if playerID == 1 {
-                                                player2 += 1
-                                                let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "2")
-                                                let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p2", value:"\(player2)")
-                                                
-                                            } else if playerID == 2{
-                                                player1 += 1
-                                                let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "1")
-                                                let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p1", value:"\(player1)")
-                                            }
-                                        }else if maxTime > 0 {
-                                            isRun = false
-                                            forza = "lento"
-                                            let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
-                                            let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "forza", value:forza)
-                                        }
-                                        print("SET TURNO")
-                                        if playerID == 2 {
-                                            let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "1")
-                                        } else if playerID == 1 {
+                                    self.stopTimer()
+                                    
+                                    //Da aggiungere il random
+                                    if colpo == viewModelPong.colpo {
+                                        print("Hai sbagliato colpo errore!")
+                                    } else {
+                                        colpo = viewModelPong.colpo
+                                    }
+                                    
+                                    if maxTime > (maxTime/2)-1 && maxTime < (maxTime/2)+1  {
+                                        isRun = false
+                                        forza = "forte"
+                                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "forza", value:forza)
+                                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
+                                    }else if maxTime == 0  {
+                                        playSound(sound: "lose", type: "mp3")
+                                        isRun = false
+                                        colpo = "battuta"
+                                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
+                                        if playerID == 1 {
+                                            player2 += 1
                                             let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "2")
-                                        }
+                                            let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p2", value:"\(player2)")
                                             
+                                        } else if playerID == 2{
+                                            player1 += 1
+                                            let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "1")
+                                            let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p1", value:"\(player1)")
+                                        }
+                                    }else if maxTime > 0 {
+                                        isRun = false
+                                        forza = "lento"
+                                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
+                                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "forza", value:forza)
+                                    }
+                                    print("SET TURNO")
+                                    if playerID == 2 {
+                                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "1")
+                                    } else if playerID == 1 {
+                                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "2")
+                                    }
+                                    
                                 }
                             })
                         
-
+                        
                         //                        RoundedButton(name: "Colpo")
                         //                            .onTapGesture {
                         //                                //Chiama la funzione tempoColpo ogni volta che clicchiamo su colpo
@@ -298,29 +298,29 @@ struct MatchView: View {
     
     
     
-}
-
-
-
-
-//struct MatchView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MatchView(players: 1 )
-//    }
-//}
-
-
-func playSound(sound: String, type: String) {
-    if let path = Bundle.main.path(forResource: sound, ofType: type) {
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            audio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            audio.play()
-        } catch {
-            print("ERROR")
+    
+    
+    
+    
+    
+    //struct MatchView_Previews: PreviewProvider {
+    //    static var previews: some View {
+    //        MatchView(players: 1 )
+    //    }
+    //}
+    
+    
+    func playSound(sound: String, type: String) {
+        if let path = Bundle.main.path(forResource: sound, ofType: type) {
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
+                try AVAudioSession.sharedInstance().setActive(true)
+                
+                audio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audio.play()
+            } catch {
+                print("ERROR")
+            }
         }
     }
 }
-

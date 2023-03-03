@@ -11,6 +11,7 @@ import SwiftUI
 
 
 struct TrainingView: View {
+//Bottone per tornare indietro tra le view personalizzato
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var btnBack : some View { Button(action: {
         self.presentationMode.wrappedValue.dismiss()
@@ -24,27 +25,20 @@ struct TrainingView: View {
     }
     }
     
-    let motionManager = CMMotionManager()
     
-    let queue = OperationQueue()
     
     private var viewModelPong = ViewModelPong()
     
-    @State private var roll = Double.zero
-    @State private var z = Double.zero
-    @State private var radice = Double.zero
-    @State private var turn = true
-    @State private var colpito = false
     @State private var punt = 0
     @State private var maxTime = 4.0
+    let time = 4.0
     @State private var molt = 1.0
     @State var isRun = false
-    @State var direzione = "destra"
     @State var record = 0
     @State var potenza = "lento"
-    @State private var colpo = ""
+    @State private var start = false
+    @State private var colpo = "battuta"
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var timer2 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationView{
@@ -62,7 +56,43 @@ struct TrainingView: View {
                         .clipShape(Capsule())
                         .onReceive(viewModelPong.$colpito, perform: {
                             value in
-                            
+                            if value {
+                                print("Ricevo colpito dal watch a tempo \(maxTime)")
+                                if maxTime > (time/2)-1 && maxTime < (time/2)+1  {
+                                    isRun = false
+                                    potenza = "forte"
+                                    colpo = viewModelPong.colpo
+                                    maxTime = 3
+                                    
+                                    punt += 1
+                                    ricevi()
+                                    
+                                } else if maxTime > 0  {
+                                    isRun = false
+                                    potenza = "lento"
+                                    colpo = viewModelPong.colpo
+                                    maxTime = 4
+                                    punt += 1
+                                    ricevi()
+                                }
+                                //Se finisce il tempo e colpiamo dopo lo 0 avremo mancato il colpo
+                                else if maxTime == 0 {
+                                    isRun = false
+                                    print("tempo finito")
+                                    colpo = "battuta"
+                                    maxTime = 4
+                                    if punt > record {
+                                        record = punt
+                                        playSound(sound: "finePartita", type: "mp3")
+                                        
+                                    }
+                                    else {
+                                        playSound(sound: "lose", type: "mp3")
+                                    }
+                                    punt = 0
+                                    ricevi()
+                                }
+                            }
                         })
                     
                     if colpo != "" {
@@ -72,29 +102,15 @@ struct TrainingView: View {
                     Spacer()
                     
                     
-                    
-                    
                     Scoreboard(player1: "Punti", player2: "Record", score1: punt, score2: record)
                 }
                 .onReceive(timer) {
                     //Azione del timer, decrementa il tempo ogni secondo
-                    
                     time in
-                    
-                    if maxTime == 1 && turn {
-                        self.turn = false
-                        playSound(sound: "mancato", type: "mp3")
-                    }
-                    
-                    if maxTime > 0 {
-                        turn = true
+                    if maxTime > 0 && start{
                         maxTime -= 1
                     }
                     
-                }
-                .onReceive(timer2) {
-                    time in
-                    colpito = false
                 }
             }
             
@@ -102,55 +118,9 @@ struct TrainingView: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: btnBack)
         .onAppear {
-            if !isRun  {
-                radice = 0
-                //Fa partire il timer solo se non è già attivo
-                startTimer()
-                isRun = true
-                //segnala al watch che deve iniziare a rilevare i movimenti
-                viewModelPong.sendMessage(key: "colpito", value: false)
-                viewModelPong.colpito = false
-                
-            } else if isRun {
-                //Se colpiamo prima dei 3 secondi avremo un buon colpo e non cambierà il moltiplicatore del tempo
-                if maxTime > 0 && radice > 1.3 {
-                    isRun = false
-                    potenza = "forte"
-                    maxTime = 2
-                    
-                    punt += 1
-                    
-                } else if maxTime > 0 && radice > 1.1 {
-                    isRun = false
-                    
-                    potenza = "lento"
-                    maxTime = 4
-                    punt += 1
-                }
-                //Se finisce il tempo e colpiamo dopo lo 0 avremo mancato il colpo
-                else if maxTime == 0 {
-                    isRun = false
-                    
-                    radice = 0
-                    colpo = "mancato"
-                    maxTime = 4
-                    stopTimer()
-                    if punt > record {
-                        record = punt
-                        sleep(1)
-                        playSound(sound: "finePartita", type: "mp3")
-                        
-                    }
-                    //                        else {
-                    //                            playSound(sound: "lose", type: "mp3")
-                    //                        }
-                    punt = 0
-                    sleep(4)
-                    startTimer()
-                    
-                    
-                }
-            }
+            viewModelPong.sendMessage(key: "partita", value: true)
+            ricevi()
+            
             //Se colpiamo nell'intervallo 0...3 avremo quasi mancato il colpo dunque avremo meno tempo per colpire
             //o il nostro avversario avrà più tempo
             
@@ -159,6 +129,29 @@ struct TrainingView: View {
             //Aggiorna su parthenokit il risultato del colpo effettuato
         }
         
+    }
+    func ricevi() {
+        
+        if !isRun && colpo == "battuta" {
+            //Fa partire il timer solo se non è già attivo
+            //                startTimer()
+            print("Attendo primo colpo")
+            isRun = true
+            start = false
+            //segnala al watch che deve iniziare a rilevare i movimenti
+            viewModelPong.sendMessage(key: "colpito", value: false)
+            //            print("Segnalo al watch di dover colpire")
+            viewModelPong.colpito = false
+            
+        } else if !isRun {
+            viewModelPong.sendMessage(key: "colpito", value: false)
+            //            print("Segnalo al watch di dover colpire")
+            viewModelPong.colpito = false
+//            startTimer()
+            start = true
+            isRun = true
+            
+        }
     }
     
     
@@ -203,47 +196,6 @@ struct TrainingView: View {
     //            //Aggiorna su parthenokit il risultato del colpo effettuato
     //        }
     //    }
-    
-    func tempoBattuta() {
-        
-        if !isRun {
-            isRun = true
-            attendiColpo()
-        }
-        
-    }
-    
-    func attendiColpo (){
-        
-        
-        //Legge il valore di colpo salvato su parthenokit, questo definirà il tempo che avremo a disposizione
-        //Se il colpo è stato buono il tempo sarà massimo
-        if !isRun {
-            if potenza == "forte" {
-                self.molt = 0.75
-                
-                //Se il colpo è stato lento avremo meno tempo per colpire (training) o daremo un bonus al nostro avversario (multi)
-            }else {
-                self.molt = 1
-                //Se il colpo è stato mancato aggiorneremo il risultato e si setterà il moltiplicatore di default
-            }
-            
-            //Fa partire il timer solo se non è già attivo
-            startTimer()
-            isRun = true
-            self.maxTime = 4*molt
-            attendiColpo()
-        } else if isRun {
-            //possibile variabile di stato da comunicare al watch
-            //segnala al watch che deve iniziare a rilevare i movimenti
-            viewModelPong.sendMessage(key: "colpito", value: false)
-            viewModelPong.colpito = false
-            //            Vecchio sistema di riconoscimento colpo
-            //            da sincronizzare con l'on receive
-        }
-    }
-    
-    
     
     
     
