@@ -42,6 +42,7 @@ class ViewModelPong: ObservableObject {
                 case "player":
                     self.player = value.value as! Int
                 case "colpito":
+                    print("Leggo colpito, nuovo valore: \(value.value as! Bool)")
                     self.colpito = value.value as! Bool
                 default:
                     print("Error")
@@ -53,7 +54,7 @@ class ViewModelPong: ObservableObject {
     
     func sendMessage(key: String, value: Any){
         let message = ["path": key, "value": value]
-//        print("richiamo send message e mando ", message)
+        print("richiamo send message e mando ", message)
         userConnectivityPong.sendMessage(message: message)
     }
 }

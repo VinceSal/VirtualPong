@@ -30,7 +30,8 @@ class UserConnectivityPong: NSObject, WCSessionDelegate {
             return
         }
         session.activate()
-    }
+        }
+    
 
     func sendMessage(message: [String: Any]) {
 //        print("Invio messaggio")

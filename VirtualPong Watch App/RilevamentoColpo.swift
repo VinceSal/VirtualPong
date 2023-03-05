@@ -3,16 +3,14 @@ import CoreML
 import HealthKit
 import WatchKit
 // Creazione dell'oggetto per la gestione dei dati dai sensori
-    //    let motionManager = CMMotionManager()
+    // let motionManager = CMMotionManager()
     
 class Movimento: ObservableObject{
     var motionManager = CMMotionManager()
     
 
-    
-    
     // Creazione dell'oggetto per la predizione di attività
-    //    let activityClassifier = try? Pong_Test_2(configuration: MLModelConfiguration())
+    // let activityClassifier = try? Pong_Test_2(configuration: MLModelConfiguration())
     let activityClassifier = try? Prova_Pong_4(configuration: MLModelConfiguration())
 
     // Dichiarazione di un timer globale
@@ -69,8 +67,6 @@ class Movimento: ObservableObject{
     }
     
     
-    
-    
     // Funzione per avviare il timer di aggiornamento dei sensori
     func startMotionUpdates() {
         print("Start motion")
@@ -94,8 +90,6 @@ class Movimento: ObservableObject{
                 self.handleMotionUpdate(motion: self.motionManager )
             }
         }
-
-        
     }
     
     // Funzione per fermare il timer di aggiornamento dei sensori
@@ -139,10 +133,10 @@ class Movimento: ObservableObject{
         let accY = avgAcceleration(accelerations: accelerationArrayY)
         let accZ = avgAcceleration(accelerations: accelerationArrayZ)
         let magnitude = sqrt(pow(accX,2) + pow(accY,2) + pow(accZ,2))
-        //        print(magnitude)
+        // print(magnitude)
         
         if  magnitude < 3.5  {
-            //            print("Movimento troppo lento! Hai colpito la rete!")
+            // print("Movimento troppo lento! Hai colpito la rete!")
             self.accelerationArrayX = []
             self.accelerationArrayY = []
             self.accelerationArrayZ = []
@@ -152,9 +146,6 @@ class Movimento: ObservableObject{
             startMotionUpdates()
             return
         }
-        
-        
-        
         
         // Preparazione dei dati per la predizione
         let accelerationArrayXFloat = accelerationArrayX.map { Double($0) }
@@ -175,7 +166,7 @@ class Movimento: ObservableObject{
         
         
         
-        //        print("acc_x , acc_y , acc_z , gyro_x , gyro_y , gyro_z")
+        //  print("acc_x , acc_y , acc_z , gyro_x , gyro_y , gyro_z")
         for i in 0..<lung {
             accelerationX[i] = accelerationArrayXFloat[i] as NSNumber
             accelerationY[i] = accelerationArrayYFloat[i] as NSNumber
@@ -183,7 +174,7 @@ class Movimento: ObservableObject{
             gyroX[i] = gyroArrayXFloat[i] as NSNumber
             gyroY[i] = gyroArrayYFloat[i] as NSNumber
             gyroZ[i] = gyroArrayZFloat[i] as NSNumber
-            //            print("\(accelerationX[i]),\(accelerationY[i]),\(accelerationZ[i]),\(gyroX[i]),\(gyroY[i]),\(gyroZ[i])")
+            // print("\(accelerationX[i]),\(accelerationY[i]),\(accelerationZ[i]),\(gyroX[i]),\(gyroY[i]),\(gyroZ[i])")
         }
         
         
@@ -191,13 +182,13 @@ class Movimento: ObservableObject{
         // Esecuzione della predizione
         let prediction = try! model.prediction(acc_x: accelerationX, acc_y: accelerationY, acc_z: accelerationZ,gyro_x: gyroX, gyro_y: gyroY, gyro_z: gyroZ, stateIn: stateIn)
         print("Prediction effettuata")
-        WKInterfaceDevice.current().play(.directionUp)
+        WKInterfaceDevice.current().play(.start)
         // Aggiornamento della label con l'attività predetta
         currentActivity = prediction.label
         print(prediction.label)
         print(prediction.labelProbability)
         if currentActivity == "dritti" || currentActivity == "rovesci" {
-            //            print(accelerationX,accelerationY,accelerationZ,gyroX,gyroY,gyroZ)
+            // print(accelerationX,accelerationY,accelerationZ,gyroX,gyroY,gyroZ)
             stopMotionUpdates()
             self.gyroArrayX = []
             self.gyroArrayY = []
@@ -228,6 +219,5 @@ class Movimento: ObservableObject{
         norm = sqrt(norm)
         return norm
     }
-    
 }
 
