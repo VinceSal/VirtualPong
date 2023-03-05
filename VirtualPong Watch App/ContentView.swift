@@ -45,7 +45,7 @@ struct ContentView: View {
     }
     
 
-    @StateObject var viewModelPong = ViewModelPong()
+    @State private var viewModelPong = ViewModelPong()
     @State var partita = false
     
     var body: some View {
@@ -62,7 +62,7 @@ struct ContentView: View {
                 VStack {
                     Image("log")
                         .resizable()
-                        .position(x: 39.5, y: -8)
+                        .position(x: 39.5, y: -30)
                         .frame(width: 70, height: 50)
                     
                         .foregroundColor(.white)
