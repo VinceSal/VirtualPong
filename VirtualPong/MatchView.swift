@@ -104,6 +104,7 @@ struct MatchView: View {
 //                                        print("Hai sbagliato colpo errore!")
 //                                    } else {
                                         colpo = viewModelPong.colpo
+                                    print("Colpo: \(colpo)")
 //                                    }
                                     
                                     if maxTime > (maxTime/2)-1 && maxTime < (maxTime/2)+1  {
@@ -118,12 +119,10 @@ struct MatchView: View {
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
                                         if playerID == 1 {
                                             player2 += 1
-                                            let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "2")
                                             let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p2", value:"\(player2)")
                                             
                                         } else if playerID == 2{
                                             player1 += 1
-                                            let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "1")
                                             let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p1", value:"\(player1)")
                                         }
                                     }else if maxTime > 0 {
@@ -162,26 +161,26 @@ struct MatchView: View {
             .onReceive(timer) {
                 //Azione del timer, decrementa il tempo ogni secondo
                 time in
-                if maxTime == 0 && isRun && !viewModelPong.colpito {
-                    isRun = false
-                    colpo = "battuta"
-                    let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
-                    if playerID == 1 {
-                        player2 += 1
-                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "2")
-                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p2", value:"\(player2)")
-                        
-                    } else if playerID == 2{
-                        player1 += 1
-                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "1")
-                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p1", value:"\(player1)")
-                    }
-                    
-                }
-                if maxTime == 1 && turn {
-                    self.turn = false
-                    playSound(sound: "mancato", type: "mp3")
-                }
+//                if maxTime == 0 && isRun && !viewModelPong.colpito {
+//                    isRun = false
+//                    colpo = "battuta"
+//                    let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
+//                    if playerID == 1 {
+//                        player2 += 1
+//                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "2")
+//                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p2", value:"\(player2)")
+//
+//                    } else if playerID == 2{
+//                        player1 += 1
+//                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "1")
+//                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p1", value:"\(player1)")
+//                    }
+//
+//                }
+//                if maxTime == 1 && turn {
+//                    self.turn = false
+//                    playSound(sound: "mancato", type: "mp3")
+//                }
                 if maxTime > 0 {
                     turn = true
                     maxTime -= 1

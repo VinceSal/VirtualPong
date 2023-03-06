@@ -9,6 +9,7 @@ var paddle = ""
 
 struct ContentView: View {
     @StateObject var viewModelPong = ViewModelPong()
+    @State var prova = false
     var body: some View {
         NavigationView {
             ZStack {
@@ -22,12 +23,12 @@ struct ContentView: View {
                     Spacer()
                     Image("log")
                         .position(x:130,y:500)
-                        .onAppear{
-                            playSound(sound: "forte", type: "wav")
-                        }
+
                 
                 VStack {
                     Spacer()
+                    NavigationLink("", destination: ConnectView(viewModelPong: viewModelPong), isActive: $prova)
+                    RoundedButton2(name: "Prova", isActive: $prova)
                     NavigationLink(destination: ConnectView(viewModelPong: viewModelPong)) {
                         RoundedButton(name: "Connect")
 
@@ -35,6 +36,7 @@ struct ContentView: View {
                     NavigationLink (destination: TrainingView(viewModelPong: viewModelPong)) {
                         RoundedButton(name: "Training")
                     }
+
                 }
                 .padding(.bottom, 30)
             }

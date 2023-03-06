@@ -37,7 +37,47 @@ extension Color {
     }
 }
 
+struct RoundedButton2: View {
+    var name: String
+    @Binding var isActive: Bool
+    var body: some View {
+        
 
+            ZStack {
+//                RoundedRectangle(cornerRadius: 20)
+//                    .frame(width: 172.0, height: 81.0)
+//                    .foregroundColor(Color(hex: rosso))
+//                    .offset()
+//
+                RoundedRectangle(cornerRadius: 20)
+                    .frame(width: 165.0, height: 74.0)
+                    .foregroundColor(Color(hex: bianco))
+                    .shadow(color: Color(hex: rosso) , radius: 1)
+                    .shadow(color: Color(hex: rosso),radius: 1)
+                    .shadow(color: Color(hex: rosso),radius: 1)
+                    .shadow(color: Color(hex: rosso),radius: 1)
+                    .shadow(color: Color(hex: rosso),radius: 1)
+                    .shadow(color: Color(hex: rosso),radius: 1)
+                   
+                Button(name) {
+                        let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+                        feedbackGenerator.prepare()
+                        feedbackGenerator.impactOccurred()
+                        playSound(sound: "button", type: "mp3")
+                        isActive = true
+                    
+                }
+                    .font(.system(size: 38, weight: .bold))
+                    .foregroundColor(Color(hex: rosso))
+
+            }
+        
+        
+  
+        
+            
+        }
+    }
 
 struct RoundedButton: View {
     var name: String
@@ -66,6 +106,7 @@ struct RoundedButton: View {
                         feedbackGenerator.prepare()
                         feedbackGenerator.impactOccurred()
                         playSound(sound: "button", type: "mp3")
+ 
                     
                 }
                     .font(.system(size: 38, weight: .bold))
