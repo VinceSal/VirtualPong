@@ -41,6 +41,7 @@ extension Color {
 
 struct RoundedButton: View {
     var name: String
+
     var body: some View {
         
 
@@ -59,12 +60,19 @@ struct RoundedButton: View {
                     .shadow(color: Color(hex: rosso),radius: 1)
                     .shadow(color: Color(hex: rosso),radius: 1)
                     .shadow(color: Color(hex: rosso),radius: 1)
-
-
-                Text(name)
+                   
+                Button(name) {
+                        let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+                        feedbackGenerator.prepare()
+                        feedbackGenerator.impactOccurred()
+                        playSound(sound: "button", type: "mp3")
+                    
+                }
                     .font(.system(size: 38, weight: .bold))
                     .foregroundColor(Color(hex: rosso))
+
             }
+        
         
   
         

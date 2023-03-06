@@ -75,9 +75,6 @@ struct MatchView: View {
                                         self.players = Int(res["players"]!)!
                                     }
                                 }
-                                print("invio messaggio connect")
-                                viewModelPong.sendMessage(key: "partita", value: true)
-                                
                             }
                         Spacer()
                         
@@ -93,16 +90,21 @@ struct MatchView: View {
                         //let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:"buono")
                         //Mostra il risultato del colpo effettuato (di default è def)
                         HeadText(text: "\n Turno: \(turno)\n \(colpo)" )
+                            .onAppear{
+                                print("invio messaggio connect")
+                                viewModelPong.sendMessage(key: "partita", value: true)
+                                
+                            }
                             .onReceive(viewModelPong.$colpito, perform: { value in
                                 if value {
                                     self.stopTimer()
                                     
                                     //Da aggiungere il random
-                                    if colpo == viewModelPong.colpo {
-                                        print("Hai sbagliato colpo errore!")
-                                    } else {
+//                                    if colpo == viewModelPong.colpo {
+//                                        print("Hai sbagliato colpo errore!")
+//                                    } else {
                                         colpo = viewModelPong.colpo
-                                    }
+//                                    }
                                     
                                     if maxTime > (maxTime/2)-1 && maxTime < (maxTime/2)+1  {
                                         isRun = false
@@ -160,7 +162,7 @@ struct MatchView: View {
             .onReceive(timer) {
                 //Azione del timer, decrementa il tempo ogni secondo
                 time in
-                if maxTime == 0 && isRun && !colpito {
+                if maxTime == 0 && isRun && !viewModelPong.colpito {
                     isRun = false
                     colpo = "battuta"
                     let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
@@ -199,6 +201,7 @@ struct MatchView: View {
                     colpo = res["colpo"] ?? "battuta"
                     player1 = Int(res["p1"] ?? "0")!
                     player2 = Int(res["p2"] ?? "0")!
+                    print("Int turno: \(Int(turno) ?? 0)")
                     if  Int(turno) == playerID  && players == 2{
                         if !isRun && colpo != "battuta"{
                             attendiColpo()

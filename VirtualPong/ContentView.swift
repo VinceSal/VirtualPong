@@ -28,8 +28,9 @@ struct ContentView: View {
                 
                 VStack {
                     Spacer()
-                    NavigationLink(destination: DeviceView(viewModelPong: viewModelPong)) {
+                    NavigationLink(destination: ConnectView(viewModelPong: viewModelPong)) {
                         RoundedButton(name: "Connect")
+
                     }
                     NavigationLink (destination: TrainingView(viewModelPong: viewModelPong)) {
                         RoundedButton(name: "Training")
