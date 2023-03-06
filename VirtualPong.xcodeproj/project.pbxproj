@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B2D18CD29B6A3E1007956AE /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B2D18CC29B6A3E1007956AE /* test.mp3 */; };
+		8B2D18CE29B6A3E1007956AE /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B2D18CC29B6A3E1007956AE /* test.mp3 */; };
 		8B72EA2329B27BBE00EBE324 /* VirtualPongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA2229B27BBE00EBE324 /* VirtualPongApp.swift */; };
 		8B72EA2529B27BBE00EBE324 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72EA2429B27BBE00EBE324 /* ContentView.swift */; };
 		8B72EA2729B27BBF00EBE324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B72EA2629B27BBF00EBE324 /* Assets.xcassets */; };
@@ -73,6 +75,7 @@
 /* Begin PBXFileReference section */
 		8B06D79729B3A36B0092823F /* VirtualPong-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "VirtualPong-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8B06D79829B3A3730092823F /* VirtualPong Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "VirtualPong Watch App.entitlements"; sourceTree = "<group>"; };
+		8B2D18CC29B6A3E1007956AE /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		8B72EA1F29B27BBE00EBE324 /* VirtualPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B72EA2229B27BBE00EBE324 /* VirtualPongApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPongApp.swift; sourceTree = "<group>"; };
 		8B72EA2429B27BBE00EBE324 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 		8B72EA1629B27BBE00EBE324 = {
 			isa = PBXGroup;
 			children = (
+				8B2D18CC29B6A3E1007956AE /* test.mp3 */,
 				8B72EA6529B2808800EBE324 /* Suoni */,
 				8B72EA4629B27C4F00EBE324 /* Connectivity */,
 				8B72EA2129B27BBE00EBE324 /* VirtualPong */,
@@ -288,6 +292,7 @@
 			files = (
 				8B72EA6629B2808900EBE324 /* Suoni in Resources */,
 				8B72EA2A29B27BBF00EBE324 /* Preview Assets.xcassets in Resources */,
+				8B2D18CD29B6A3E1007956AE /* test.mp3 in Resources */,
 				8B72EA2729B27BBF00EBE324 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +303,7 @@
 			files = (
 				8B72EA6729B2808900EBE324 /* Suoni in Resources */,
 				8B72EA3C29B27BC100EBE324 /* Preview Assets.xcassets in Resources */,
+				8B2D18CE29B6A3E1007956AE /* test.mp3 in Resources */,
 				8B72EA3929B27BC100EBE324 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

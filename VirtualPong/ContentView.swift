@@ -1,5 +1,6 @@
 import SwiftUI
 import ParthenoKit
+import AVFoundation
 
 let rosso = "B82F1C"
 let bianco = "FFECDD"
@@ -21,6 +22,9 @@ struct ContentView: View {
                     Spacer()
                     Image("log")
                         .position(x:130,y:500)
+                        .onAppear{
+                            playSound(sound: "forte", type: "wav")
+                        }
                 
                 VStack {
                     Spacer()
@@ -34,6 +38,19 @@ struct ContentView: View {
                 .padding(.bottom, 30)
             }
             .navigationBarBackButtonHidden(true)
+        }
+    }
+    func playSound(sound: String, type: String) {
+        if let path = Bundle.main.path(forResource: sound, ofType: type, inDirectory: "Suoni") {
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
+                try AVAudioSession.sharedInstance().setActive(true)
+                
+                audio2 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audio2.play()
+            } catch {
+                print("ERROR")
+            }
         }
     }
 }

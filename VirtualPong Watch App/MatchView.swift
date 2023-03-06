@@ -7,8 +7,9 @@
 
 import SwiftUI
 import WatchKit
+import AVFoundation
 
-
+var audio = AVAudioPlayer()
 
 
 struct MatchView: View {
@@ -63,21 +64,21 @@ struct MatchView: View {
                                 print("Colpito = \(viewModelPong.colpito)")
                                 
                                 print("MOVIMENTO")
-//                                queue.async {
+                                //                                queue.async {
                                 if !run {
                                     movimento3.startMotionUpdates()
                                 }
                             }
-                                                            // Esegui la prima predizione
-//                                                        }
-//                                                        queue.asyncAfter(deadline: .now() + delay) {
-//                                                            movimento2.startMotionUpdates()
-//                                                            // Esegui la seconda predizione
-//                                                        }
-//                                                        queue.asyncAfter(deadline: .now() + (2 * delay)) {
-//                                                            movimento3.startMotionUpdates()
-//                                                            // Esegui la terza predizione
-//                                                        }
+                            // Esegui la prima predizione
+                            //                                                        }
+                            //                                                        queue.asyncAfter(deadline: .now() + delay) {
+                            //                                                            movimento2.startMotionUpdates()
+                            //                                                            // Esegui la seconda predizione
+                            //                                                        }
+                            //                                                        queue.asyncAfter(deadline: .now() + (2 * delay)) {
+                            //                                                            movimento3.startMotionUpdates()
+                            //                                                            // Esegui la terza predizione
+                            //                                                        }
                             
                             
                             
@@ -88,65 +89,83 @@ struct MatchView: View {
                     })
                     
                     //                    }
-//                                            .onReceive(movimento1.$currentActivity, perform: { value in
-//                                                if value == "" {
-//                                                    return
-//                                                }else if value == "dritti" {
-//                                                    colpo1 = 0.0
-//                                                } else {
-//                                                    colpo1 = 1.0
-//                                                }
-//                                                x = x+1
-//                                                print("Incremento la x la prima volta \(x) \n Il colpo1 era \(colpo1)")
-//                                            })
-//                                            .onReceive(movimento2.$currentActivity, perform: { value in
-//                                                if value == "" {
-//                                                    return
-//                                                }else if value == "dritti" {
-//                                                    colpo2 = 0.0
-//                                                } else {
-//                                                    colpo2 = 1.0
-//                                                }
-//                                                x = x+1
-//                                                print("Incremento la x la seconda volta \(x) \n Il colpo2 era \(colpo2)")
-//
-//                                            })
-                                            .onReceive(movimento3.$currentActivity, perform: { value in
-                                                if value == "dritti" {
-                                                    colpo3 = 0.0
-                                                } else {
-                                                    colpo3 = 1.0
-                                                }
-                                                if x < 3 {
-                                                    x = x+1
-                                                }
-                                                print("Incremento la x la terza volta \(x) \n Il colpo3 era \(colpo3)")
-                    
-                                                if x == 1 {
-//                                                    let c = (colpo1 + colpo2 + colpo3 ) / 3
-//                                                    if c > 1.5 {
-//                                                        colpo = "rovescio"
-//                                                    } else {
-//                                                        colpo = "dritto"
-//                                                    }
-                                                    if colpo3 == 0.0 {
-                                                        colpo = "dritto"
-                                                    } else {
-                                                        colpo = "rovescio"
-                                                    }
-                                                    print("CIAO")
-                                                    viewModelPong.sendMessage(key: "colpo", value: colpo)
-                                                    viewModelPong.sendMessage(key: "colpito", value: true)
-                                                    viewModelPong.colpito = true
-                                                    x = 0
-                                                }
-                                            })
+                    //                                            .onReceive(movimento1.$currentActivity, perform: { value in
+                    //                                                if value == "" {
+                    //                                                    return
+                    //                                                }else if value == "dritti" {
+                    //                                                    colpo1 = 0.0
+                    //                                                } else {
+                    //                                                    colpo1 = 1.0
+                    //                                                }
+                    //                                                x = x+1
+                    //                                                print("Incremento la x la prima volta \(x) \n Il colpo1 era \(colpo1)")
+                    //                                            })
+                    //                                            .onReceive(movimento2.$currentActivity, perform: { value in
+                    //                                                if value == "" {
+                    //                                                    return
+                    //                                                }else if value == "dritti" {
+                    //                                                    colpo2 = 0.0
+                    //                                                } else {
+                    //                                                    colpo2 = 1.0
+                    //                                                }
+                    //                                                x = x+1
+                    //                                                print("Incremento la x la seconda volta \(x) \n Il colpo2 era \(colpo2)")
+                    //
+                    //                                            })
+                    .onReceive(movimento3.$currentActivity, perform: { value in
+                        if value == "dritti" {
+                            colpo3 = 0.0
+                        } else {
+                            colpo3 = 1.0
+                        }
+                        if x < 3 {
+                            x = x+1
+                        }
+                        print("Incremento la x la terza volta \(x) \n Il colpo3 era \(colpo3)")
+                        
+                        if x == 1 {
+                            //                                                    let c = (colpo1 + colpo2 + colpo3 ) / 3
+                            //                                                    if c > 1.5 {
+                            //                                                        colpo = "rovescio"
+                            //                                                    } else {
+                            //                                                        colpo = "dritto"
+                            //                                                    }
+                            if colpo3 == 0.0 {
+                                colpo = "dritto"
+                            } else {
+                                colpo = "rovescio"
+                            }
+                            print("CIAO")
+                            viewModelPong.sendMessage(key: "colpo", value: colpo)
+                            viewModelPong.sendMessage(key: "colpito", value: true)
+                            viewModelPong.colpito = true
+                            playSound(sound: "lento", type: "wav")
+                            x = 0
+                        }
+                    })
                     
                 }
             }
         }
     }
+    
+    func playSound(sound: String, type: String) {
+        if let path = Bundle.main.path(forResource: sound, ofType: type, inDirectory: "Suoni") {
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
+                try AVAudioSession.sharedInstance().setActive(true)
+                
+                audio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audio.play()
+            } catch {
+                print("ERROR")
+            }
+        }
+    }
 }
+//
+//}
+
     
 //    func startTimer() {
 //        self.timeRemaining = 3.0 // resetta il tempo rimanente

@@ -310,17 +310,19 @@ struct MatchView: View {
     //}
     
     
-    func playSound(sound: String, type: String) {
-        if let path = Bundle.main.path(forResource: sound, ofType: type) {
-            do {
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
-                try AVAudioSession.sharedInstance().setActive(true)
-                
-                audio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-                audio.play()
-            } catch {
-                print("ERROR")
-            }
+}
+
+func playSound(sound: String, type: String) {
+    if let path = Bundle.main.path(forResource: sound, ofType: type, inDirectory: "Suoni") {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            audio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            audio.play()
+        } catch {
+            print("ERROR")
         }
     }
 }
+

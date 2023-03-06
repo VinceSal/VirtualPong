@@ -7,11 +7,22 @@
 
 import CoreMotion
 import AVFoundation
+import Foundation
 import SwiftUI
+
+extension Date {
+    var millisecondsSince1970: Int64 {
+        Int64((self.timeIntervalSince1970 * 1000.0).rounded())
+    }
+    
+    init(milliseconds: Int64) {
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
+    }
+}
 
 
 struct TrainingView: View {
-//Bottone per tornare indietro tra le view personalizzato
+    //Bottone per tornare indietro tra le view personalizzato
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var btnBack : some View { Button(action: {
         self.presentationMode.wrappedValue.dismiss()
@@ -27,7 +38,12 @@ struct TrainingView: View {
     
     
     
+    
     @ObservedObject var viewModelPong: ViewModelPong
+    //Orario inizio partita - data di riferimento
+    //Differenza tra orario attuale e ora di riferimento
+    //Intero da salvare, e confrontare
+    @State private var old: Int64 = -1
     
     @State private var punt = 0
     @State private var maxTime = 4.0
@@ -57,40 +73,68 @@ struct TrainingView: View {
                         .onReceive(viewModelPong.$colpito, perform: {
                             value in
                             if value {
+                                
                                 print("Ricevo colpito dal watch a tempo \(maxTime)")
                                 if maxTime > (time/2)-1 && maxTime < (time/2)+1  {
-                                    isRun = false
-                                    potenza = "forte"
-                                    colpo = viewModelPong.colpo
-                                    maxTime = 3
-                                    
-                                    punt += 1
-                                    ricevi()
+                                    if old == -1 {
+                                        old = Date().millisecondsSince1970
+                                    } else {
+                                        let old2 = Date().millisecondsSince1970
+                                        if old2-old >= 1000 {
+                                            old = old2
+                                            isRun = false
+                                            potenza = "forte"
+                                            playSound(sound: "fortew", type: "mpeg")
+                                            colpo = viewModelPong.colpo
+                                            maxTime = 3
+                                            punt += 1
+                                            ricevi()
+                                        }
+                                    }
                                     
                                 } else if maxTime > 0  {
-                                    isRun = false
-                                    potenza = "lento"
-                                    colpo = viewModelPong.colpo
-                                    maxTime = 4
-                                    punt += 1
-                                    ricevi()
-                                }
+                                    if old == -1 {
+                                        old = Date().millisecondsSince1970
+                                    } else {
+                                        let old2 = Date().millisecondsSince1970
+                                        if old2-old >= 1000 {
+                                            old = old2
+                                            
+                                            isRun = false
+                                            potenza = "lento"
+                                            playSound(sound: "piano1", type: "mpeg")
+                                            
+                                            colpo = viewModelPong.colpo
+                                            maxTime = 4
+                                            
+                                            punt += 1
+                                            ricevi()
+                                        }
+                                    }                                }
                                 //Se finisce il tempo e colpiamo dopo lo 0 avremo mancato il colpo
                                 else if maxTime == 0 {
-                                    isRun = false
-                                    print("tempo finito")
-                                    colpo = "battuta"
-                                    maxTime = 4
-                                    if punt > record {
-                                        record = punt
-                                        playSound(sound: "finePartita", type: "mp3")
-                                        
-                                    }
-                                    else {
-                                        playSound(sound: "lose", type: "mp3")
-                                    }
-                                    punt = 0
-                                    ricevi()
+//                                    if old == -1 {
+//                                        old = Date().millisecondsSince1970
+//                                    } else {
+//                                        let old2 = Date().millisecondsSince1970
+//                                        if old2-old >= 1000 {
+//                                            old = old2
+                                            isRun = false
+                                            print("tempo finito")
+                                            colpo = "battuta"
+                                            maxTime = 4
+                                            if punt > record {
+                                                record = punt
+                                                playSound(sound: "finePartita", type: "mp3")
+                                                
+                                            }
+                                            else {
+                                                playSound(sound: "loser", type: "mpeg")
+                                            }
+                                            punt = 0
+                                            ricevi()
+//                                        }
+//                                    }
                                 }
                             }
                         })
@@ -147,12 +191,26 @@ struct TrainingView: View {
             viewModelPong.sendMessage(key: "colpito", value: false)
             //            print("Segnalo al watch di dover colpire")
             viewModelPong.colpito = false
-//            startTimer()
+            //            startTimer()
             start = true
             isRun = true
             
         }
     }
+    func playSound(sound: String, type: String) {
+        if let path = Bundle.main.path(forResource: sound, ofType: type, inDirectory: "Suoni") {
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
+                try AVAudioSession.sharedInstance().setActive(true)
+                
+                audio2 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audio2.play()
+            } catch {
+                print("ERROR")
+            }
+        }
+    }
+    
     
     
     
@@ -212,17 +270,4 @@ struct TrainingView: View {
     
     
     
-    func playSound(sound: String, type: String) {
-        if let path = Bundle.main.path(forResource: sound, ofType: type) {
-            do {
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
-                try AVAudioSession.sharedInstance().setActive(true)
-                
-                audio2 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-                audio2.play()
-            } catch {
-                print("ERROR")
-            }
-        }
-    }
 }
