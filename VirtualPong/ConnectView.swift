@@ -11,8 +11,8 @@ import Foundation
 
 
 struct ConnectView: View {
-    private var players: Int  = 0
-    
+    @ObservedObject var viewModelPong: ViewModelPong
+
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     let codeToShare = randomString(length: 6)
     
@@ -97,7 +97,7 @@ struct ConnectView: View {
                     
                     //  let _ = p.writeSync(team: "TeamC92FKSZ", tag: "Test", key: "players", value:"\(players+1)")
                     if matchcode == "" {
-                        NavigationLink(destination: MatchView(codeToShare: codeToShare)) {
+                        NavigationLink(destination: MatchView(viewModelPong: viewModelPong, codeToShare: codeToShare)) {
                             RoundedButton(name: "Start")
                                 .position(x:200, y:300)
                         }
@@ -111,7 +111,7 @@ struct ConnectView: View {
                                 var players = Int(pl)!
                                 if players != 1 {
                                     
-                                    NavigationLink(destination: MatchView(codeToShare: matchcode)) {
+                                    NavigationLink(destination: MatchView(viewModelPong: viewModelPong, codeToShare: matchcode)) {
                                         RoundedButton(name: "Join")
                                             .position(x:200,y:300)
                                             .onAppear() {
@@ -143,7 +143,7 @@ struct ConnectView: View {
 
 struct ConnectView_Previews: PreviewProvider {
     static var previews: some View {
-        ConnectView()
+        ConnectView(viewModelPong: ViewModelPong() )
     }
 }
 

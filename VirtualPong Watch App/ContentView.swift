@@ -45,7 +45,7 @@ struct ContentView: View {
     }
     
 
-    @State private var viewModelPong = ViewModelPong()
+    @StateObject var viewModelPong = ViewModelPong()
     @State var partita = false
     
     var body: some View {
@@ -88,7 +88,7 @@ struct ContentView: View {
                         
                         })
                         .sheet(isPresented: $partita, content: {
-                            VibrationView()
+                            MatchView(viewModelPong: viewModelPong)
                         })
 //                        .onAppear{
 //                            let _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in

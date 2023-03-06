@@ -120,6 +120,7 @@ class Movimento: ObservableObject{
         // Controllo della lunghezza dell'array di accelerazioni
         guard accelerationArrayX.count == lung && accelerationArrayY.count == lung && accelerationArrayZ.count == lung && gyroArrayX.count == lung && gyroArrayY.count == lung && gyroArrayZ.count == lung else {
             print("Errore lunghezza vettori!")
+            stopMotionUpdates()
             self.accelerationArrayX = []
             self.accelerationArrayY = []
             self.accelerationArrayZ = []
@@ -135,8 +136,9 @@ class Movimento: ObservableObject{
         let magnitude = sqrt(pow(accX,2) + pow(accY,2) + pow(accZ,2))
         // print(magnitude)
         
-        if  magnitude < 3.5  {
+        if  magnitude < 4.5  {
             // print("Movimento troppo lento! Hai colpito la rete!")
+            stopMotionUpdates()
             self.accelerationArrayX = []
             self.accelerationArrayY = []
             self.accelerationArrayZ = []
@@ -182,6 +184,7 @@ class Movimento: ObservableObject{
         // Esecuzione della predizione
         let prediction = try! model.prediction(acc_x: accelerationX, acc_y: accelerationY, acc_z: accelerationZ,gyro_x: gyroX, gyro_y: gyroY, gyro_z: gyroZ, stateIn: stateIn)
         print("Prediction effettuata")
+        stopMotionUpdates()
         WKInterfaceDevice.current().play(.start)
         // Aggiornamento della label con l'attività predetta
         currentActivity = prediction.label
@@ -198,6 +201,17 @@ class Movimento: ObservableObject{
             self.accelerationArrayZ = []
             return
             
+        } else if currentActivity == "standing" {
+            stopMotionUpdates()
+            self.gyroArrayX = []
+            self.gyroArrayY = []
+            self.gyroArrayZ = []
+            self.accelerationArrayX = []
+            self.accelerationArrayY = []
+            self.accelerationArrayZ = []
+            startMotionUpdates()
+            return
+
         }
         
         // Svuota i vettori per liberare la memoria
@@ -208,6 +222,7 @@ class Movimento: ObservableObject{
         self.accelerationArrayX = []
         self.accelerationArrayY = []
         self.accelerationArrayZ = []
+        stopMotionUpdates()
     }
     
     func avgAcceleration(accelerations: [Double]) -> Double {

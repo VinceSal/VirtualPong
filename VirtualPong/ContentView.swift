@@ -7,6 +7,7 @@ let sfondo = "039445"
 var paddle = ""
 
 struct ContentView: View {
+    @StateObject var viewModelPong = ViewModelPong()
     var body: some View {
         NavigationView {
             ZStack {
@@ -23,10 +24,10 @@ struct ContentView: View {
                 
                 VStack {
                     Spacer()
-                    NavigationLink(destination: DeviceView()) {
+                    NavigationLink(destination: DeviceView(viewModelPong: viewModelPong)) {
                         RoundedButton(name: "Connect")
                     }
-                    NavigationLink (destination: TrainingView()) {
+                    NavigationLink (destination: TrainingView(viewModelPong: viewModelPong)) {
                         RoundedButton(name: "Training")
                     }
                 }

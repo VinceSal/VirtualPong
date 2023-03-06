@@ -20,7 +20,7 @@ var player2 = 0
 struct MatchView: View {
     
     let motionManager = CMMotionManager()
-    let viewModelPong = ViewModelPong()
+    @ObservedObject var viewModelPong: ViewModelPong
     let queue = OperationQueue()
     
     @State private var x = 0

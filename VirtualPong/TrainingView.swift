@@ -27,7 +27,7 @@ struct TrainingView: View {
     
     
     
-    private var viewModelPong = ViewModelPong()
+    @ObservedObject var viewModelPong: ViewModelPong
     
     @State private var punt = 0
     @State private var maxTime = 4.0

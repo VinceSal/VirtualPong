@@ -10,6 +10,8 @@ import ParthenoKit
 
 
 struct DeviceView: View {
+    @ObservedObject var viewModelPong: ViewModelPong
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -20,7 +22,7 @@ struct DeviceView: View {
                         .position(x: 200, y: 110)
                     
                     Spacer()
-                    NavigationLink(destination: ConnectView()) {
+                    NavigationLink(destination: ConnectView(viewModelPong: viewModelPong)) {
                         Image("BlackPaddle")
                             .frame(width: 100, height: 100)
                             .position(x: 50, y: 50)
@@ -34,7 +36,7 @@ struct DeviceView: View {
                     }
                     .border(Color.red, width: 0) // visualizza i confini della vista
                     .frame(width: 100, height: 500).position(x: 100, y:600)
-                    NavigationLink(destination: ConnectView()) {
+                    NavigationLink(destination: ConnectView(viewModelPong: viewModelPong)) {
                         Image("RedPaddle")
                             .position(x: 45, y: 60)
                         Image("watch")
@@ -66,6 +68,6 @@ struct DeviceView: View {
     
 struct DeviceView_Previews: PreviewProvider {
     static var previews: some View {
-        DeviceView()
+        DeviceView(viewModelPong: ViewModelPong())
     }
 }

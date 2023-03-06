@@ -11,13 +11,14 @@ import WatchKit
 
 
 
-struct VibrationView: View {
+struct MatchView: View {
     
     //DA AGGIUNGERE HEALT KIT PER IL BACKGROUND
     
     @State var timeRemaining = 3.0 // inizialmente 4 secondi
     @State var timer: Timer?
-    @State var colpo = ""
+    @State var run = false
+    @State var colpo = "standing"
     @State var colpo1 = -1.0
     @State var colpo2 = -1.0
     @State var colpo3 = -1.0
@@ -28,9 +29,9 @@ struct VibrationView: View {
     let delay: TimeInterval = 0.3
     
     // Richiamo startMotionUpdates sulle tre classi movimento diverse
-    let movimento1 = Movimento()
-    let movimento2 = Movimento()
-    let movimento3 = Movimento()
+    @StateObject var movimento1 = Movimento()
+    @StateObject var movimento2 = Movimento()
+    @StateObject var movimento3 = Movimento()
     
     // Eseguo le predizioni in sequenza con uno scostamento di 0,3 secondi
     
@@ -39,7 +40,7 @@ struct VibrationView: View {
     @State var dritto = false
     @State var rovescio = false
     
-    private var viewModelPong = ViewModelPong()
+    @ObservedObject var viewModelPong: ViewModelPong
     //    @StateObject private var movimento1 = Movimento()
     //    @StateObject private var movimento2 = Movimento()
     //    @StateObject private var movimento3 = Movimento()
@@ -62,8 +63,10 @@ struct VibrationView: View {
                                 print("Colpito = \(viewModelPong.colpito)")
                                 
                                 print("MOVIMENTO")
-                                //                                                        queue.async {
-                                movimento3.startMotionUpdates()
+//                                queue.async {
+                                if !run {
+                                    movimento3.startMotionUpdates()
+                                }
                             }
                                                             // Esegui la prima predizione
 //                                                        }
@@ -109,13 +112,7 @@ struct VibrationView: View {
 //
 //                                            })
                                             .onReceive(movimento3.$currentActivity, perform: { value in
-                                                if value == "" {
-                                                    return
-                                                }
-                                                else if value == "standing" {
-                                                    return
-                                                }
-                                                else if value == "dritti" {
+                                                if value == "dritti" {
                                                     colpo3 = 0.0
                                                 } else {
                                                     colpo3 = 1.0
