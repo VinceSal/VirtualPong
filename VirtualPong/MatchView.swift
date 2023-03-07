@@ -27,7 +27,7 @@ struct MatchView: View {
     
     
     @State private var colpito = false
-    
+    @State private var perso = false
     @State private var roll = Double.zero
     @State private var z = Double.zero
     @State private var radice = Double.zero
@@ -41,7 +41,7 @@ struct MatchView: View {
     @State private var players: Int = 0
     var p = ParthenoKit()
     @State private var colpo = ""
-    
+    @State private var time = 4.0
     @State private var turno = ""
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var battuta = true
@@ -110,16 +110,17 @@ struct MatchView: View {
                                     colpo = viewModelPong.colpo
                                     print("Colpo: \(colpo)")
 //                                    }
-                                    print("codeToShare", codeToShare)
-                                    print("forza", forza)
-                                    print("colpo", colpo)
-                                    print("maxTime", maxTime, Int(maxTime), Int(maxTime) == 0)
-                                    if maxTime > (maxTime/2)-1 && maxTime < (maxTime/2)+1  {
+//                                    print("codeToShare", codeToShare)
+//                                    print("forza", forza)
+//                                    print("colpo", colpo)
+//                                    print("maxTime", maxTime, Int(maxTime), Int(maxTime) == 0)
+                                    if maxTime > (time/2)-1 && maxTime < (time/2)+1  {
 //                                        isRun = false
                                         forza = "forte"
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "forza", value:forza)
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
-                                    } else if Int(maxTime) == 0 {
+                                    } else if maxTime == 0.0 {
+                                        print("Perso Gioco principale")
                                         playSound(sound: "lose", type: "mp3")
 //                                        isRun = false
                                         colpo = "battuta"
@@ -194,10 +195,11 @@ struct MatchView: View {
 //                    self.turn = false
 //                    playSound(sound: "mancato", type: "mp3")
 //                }
+
                 if maxTime > 0 {
-                    turn = true
                     maxTime -= 1
                 }
+
             }
         }.navigationBarBackButtonHidden(true)
             .onAppear() {
@@ -289,6 +291,7 @@ struct MatchView: View {
             startTimer()
             isRun = true
             self.maxTime = 4*molt
+            self.time = maxTime
             viewModelPong.sendMessage(key: "colpito", value: false)
             viewModelPong.colpito = false
         }

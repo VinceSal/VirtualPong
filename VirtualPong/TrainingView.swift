@@ -47,7 +47,7 @@ struct TrainingView: View {
     
     @State private var punt = 0
     @State private var maxTime = 4.0
-    let time = 4.0
+    @State private var time = 4.0
     @State private var molt = 1.0
     @State var isRun = false
     @State var record = 0
@@ -87,6 +87,7 @@ struct TrainingView: View {
                                             playSound(sound: "fortew", type: "mpeg")
                                             colpo = viewModelPong.colpo
                                             maxTime = 3
+                                            time = maxTime
                                             punt += 1
                                             ricevi()
                                         }
@@ -106,6 +107,7 @@ struct TrainingView: View {
                                             
                                             colpo = viewModelPong.colpo
                                             maxTime = 4
+                                            time = maxTime
                                             
                                             punt += 1
                                             ricevi()
