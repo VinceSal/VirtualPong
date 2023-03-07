@@ -60,6 +60,7 @@ struct MatchView: View {
                     Text("\(timeRemaining)") // visualizza il tempo rimanente
                         .onReceive(viewModelPong.$colpito, perform: {
                             value in
+                            print("VALUE", value)
                             if !value {
                                 print("Colpito = \(viewModelPong.colpito)")
                                 

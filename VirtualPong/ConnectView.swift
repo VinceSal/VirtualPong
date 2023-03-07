@@ -14,7 +14,7 @@ struct ConnectView: View {
     @ObservedObject var viewModelPong: ViewModelPong
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    let codeToShare = randomString(length: 6)
+    let codeToShare = randomString(length: 6).lowercased()
     
     var sTeam = "TeamC92FKSZ"
     var sTag = ""
@@ -23,6 +23,9 @@ struct ConnectView: View {
     var sName = ""
     var result: [String:String] = [:]
     var p = ParthenoKit()
+    @State private var start = false
+    @State private var join = false
+
     
     
     
@@ -97,10 +100,9 @@ struct ConnectView: View {
                     
                     //  let _ = p.writeSync(team: "TeamC92FKSZ", tag: "Test", key: "players", value:"\(players+1)")
                     if matchcode == "" {
-                        NavigationLink(destination: MatchView(viewModelPong: viewModelPong, codeToShare: codeToShare)) {
-                            RoundedButton(name: "Start")
-                                .position(x:200, y:300)
-                        }
+                        NavigationLink("", destination: MatchView(viewModelPong: viewModelPong, codeToShare: codeToShare), isActive: $start)
+                        RoundedButton2(name: "Start", isActive: $start)
+                            .position(x:200, y:300)
                     }
                     
                     
@@ -111,15 +113,14 @@ struct ConnectView: View {
                                 var players = Int(pl)!
                                 if players != 1 {
                                     
-                                    NavigationLink(destination: MatchView(viewModelPong: viewModelPong, codeToShare: matchcode)) {
-                                        RoundedButton(name: "Join")
-                                            .position(x:200,y:300)
+                                    NavigationLink("", destination: MatchView(viewModelPong: viewModelPong, codeToShare: matchcode), isActive: $join)
+                                    RoundedButton2(name: "Join", isActive: $join)
+                                            .position(x:200, y:300)
                                             .onAppear() {
                                                 let _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                                                     if players < 1 {
                                                         let res = p.readSync(team: "TeamC92FKSZ", tag: matchcode, key: "players")
                                                         players = Int(res["players"]!)!
-                                                    }
                                                 }
                                             }
                                     }
@@ -150,6 +151,7 @@ struct ConnectView_Previews: PreviewProvider {
 
 
 func randomString(length: Int) -> String {
+    print("NUOVO CODICE")
     let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     return String((0..<length).map{ _ in letters.randomElement()! })
 }

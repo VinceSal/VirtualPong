@@ -36,7 +36,7 @@ struct MatchView: View {
     @State var molt = 1.0
     @State private var maxTime = 4.0
     @State var isRun = false
-    var codeToShare: String
+    let codeToShare: String
     @State private var turn = true
     @State private var players: Int = 0
     var p = ParthenoKit()
@@ -103,18 +103,24 @@ struct MatchView: View {
 //                                    if colpo == viewModelPong.colpo {
 //                                        print("Hai sbagliato colpo errore!")
 //                                    } else {
-                                        colpo = viewModelPong.colpo
+                                    if colpo == "" {
+                                        isRun = false
+                                        return
+                                    }
+                                    colpo = viewModelPong.colpo
                                     print("Colpo: \(colpo)")
 //                                    }
-                                    
+                                    print("codeToShare", codeToShare)
+                                    print("forza", forza)
+                                    print("colpo", colpo)
                                     if maxTime > (maxTime/2)-1 && maxTime < (maxTime/2)+1  {
-                                        isRun = false
+//                                        isRun = false
                                         forza = "forte"
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "forza", value:forza)
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
                                     }else if maxTime == 0  {
                                         playSound(sound: "lose", type: "mp3")
-                                        isRun = false
+//                                        isRun = false
                                         colpo = "battuta"
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
                                         if playerID == 1 {
@@ -126,16 +132,22 @@ struct MatchView: View {
                                             let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p1", value:"\(player1)")
                                         }
                                     }else if maxTime > 0 {
-                                        isRun = false
+//                                        isRun = false
                                         forza = "lento"
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "forza", value:forza)
                                     }
                                     print("SET TURNO")
                                     if playerID == 2 {
-                                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "1")
-                                    } else if playerID == 1 {
-                                        let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "2")
+                                        print("set player 1", codeToShare)
+                                        let write = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "1")
+                                        print(write)
+                                        
+                                        
+                                    } else {
+                                        print("set player 2", codeToShare)
+                                        let write = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "turno", value: "2")
+                                        print(write)
                                     }
                                     
                                 }
@@ -200,13 +212,14 @@ struct MatchView: View {
                     colpo = res["colpo"] ?? "battuta"
                     player1 = Int(res["p1"] ?? "0")!
                     player2 = Int(res["p2"] ?? "0")!
-                    print("Int turno: \(Int(turno) ?? 0)")
-                    if  Int(turno) == playerID  && players == 2{
+                    if  Int(turno) == playerID && players == 2 {
                         if !isRun && colpo != "battuta"{
                             attendiColpo()
                         } else if !isRun && colpo == "battuta" {
                             tempoBattuta()
                         }
+                    } else {
+                        isRun = false
                     }
                 }
                 
@@ -250,7 +263,7 @@ struct MatchView: View {
         
         if !isRun {
             self.molt = 1
-            isRun = true
+//            isRun = true
             self.maxTime = 4*molt
             attendiColpo()
         }
@@ -275,15 +288,17 @@ struct MatchView: View {
             startTimer()
             isRun = true
             self.maxTime = 4*molt
-            attendiColpo()
-        } else if isRun {
-            //possibile variabile di stato da comunicare al watch
-            //segnala al watch che deve iniziare a rilevare i movimenti
             viewModelPong.sendMessage(key: "colpito", value: false)
             viewModelPong.colpito = false
-            //            Vecchio sistema di riconoscimento colpo
-            //            da sincronizzare con l'on receive
         }
+//        } else if isRun {
+//            //possibile variabile di stato da comunicare al watch
+//            //segnala al watch che deve iniziare a rilevare i movimenti
+//            viewModelPong.sendMessage(key: "colpito", value: false)
+//            viewModelPong.colpito = false
+//            //            Vecchio sistema di riconoscimento colpo
+//            //            da sincronizzare con l'on receive
+//        }
     }
     
     

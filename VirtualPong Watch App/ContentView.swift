@@ -45,7 +45,7 @@ struct ContentView: View {
     }
     
 
-    @State private var viewModelPong = ViewModelPong()
+    @StateObject private var viewModelPong = ViewModelPong()
     @State var partita = false
     
     var body: some View {
@@ -58,6 +58,15 @@ struct ContentView: View {
                     .frame(height: reader.size.height)
                     .onAppear{
                         requestAuth()
+                        session = try? HKWorkoutSession.init(healthStore: self.healthStore, configuration: config)
+                        if let session = session {
+                            builder = session.associatedWorkoutBuilder()
+                            builder!.dataSource = HKLiveWorkoutDataSource(healthStore: self.healthStore, workoutConfiguration: config)
+                            session.startActivity(with: Date())
+                            builder!.beginCollection(withStart: Date(), completion: {
+                                _, error in
+                            })
+                        }
                     }
                 VStack {
                     Image("log")
@@ -72,15 +81,7 @@ struct ContentView: View {
                             value in
                             if value && !partita{
                                 partita = true
-                                session = try? HKWorkoutSession.init(healthStore: self.healthStore, configuration: config)
-                                if let session = session {
-                                    builder = session.associatedWorkoutBuilder()
-                                    builder!.dataSource = HKLiveWorkoutDataSource(healthStore: self.healthStore, workoutConfiguration: config)
-                                    session.startActivity(with: Date())
-                                    builder!.beginCollection(withStart: Date(), completion: {
-                                        _, error in
-                                    })
-                                }
+                 
                             } else {
                                 partita = false
 //                                stopSession()
