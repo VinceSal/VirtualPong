@@ -121,7 +121,7 @@ struct MatchView: View {
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
                                     } else if maxTime == 0.0 {
                                         print("Perso Gioco principale")
-                                        playSound(sound: "lose", type: "mp3")
+                                        playSound(sound: "loser", type: "mpeg")
 //                                        isRun = false
                                         colpo = "battuta"
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
@@ -285,10 +285,13 @@ struct MatchView: View {
             }else {
                 self.molt = 1
                 //Se il colpo è stato mancato aggiorneremo il risultato e si setterà il moltiplicatore di default
+                
             }
             
             //Fa partire il timer solo se non è già attivo
-            startTimer()
+            if colpo != "battuta" {
+                startTimer()
+            }
             isRun = true
             self.maxTime = 4*molt
             self.time = maxTime

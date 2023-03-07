@@ -132,8 +132,10 @@ struct MatchView: View {
                             //                                                    }
                             if colpo3 == 0.0 {
                                 colpo = "dritto"
+                                playSound(sound: "dritto", type: "mp3")
                             } else {
                                 colpo = "rovescio"
+                                playSound(sound: "rovescio", type: "mp3")
                             }
                             print("CIAO")
                             
@@ -142,7 +144,7 @@ struct MatchView: View {
                             viewModelPong.colpito = true
                             movimento3.stopMotionUpdates()
                             run = false
-                            playSound(sound: "lento", type: "wav")
+//                            playSound(sound: "lento", type: "wav")
                             x = 0
                         }
                     })

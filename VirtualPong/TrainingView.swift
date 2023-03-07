@@ -84,6 +84,7 @@ struct TrainingView: View {
                                             old = old2
                                             isRun = false
                                             potenza = "forte"
+                                            usleep(500)
                                             playSound(sound: "fortew", type: "mpeg")
                                             colpo = viewModelPong.colpo
                                             maxTime = 6
@@ -103,6 +104,7 @@ struct TrainingView: View {
                                             
                                             isRun = false
                                             potenza = "lento"
+                                            usleep(500)
                                             playSound(sound: "piano1", type: "mpeg")
                                             
                                             colpo = viewModelPong.colpo
