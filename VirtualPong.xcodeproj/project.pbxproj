@@ -35,6 +35,7 @@
 		8B72EA6629B2808900EBE324 /* Suoni in Resources */ = {isa = PBXBuildFile; fileRef = 8B72EA6529B2808800EBE324 /* Suoni */; };
 		8B72EA6729B2808900EBE324 /* Suoni in Resources */ = {isa = PBXBuildFile; fileRef = 8B72EA6529B2808800EBE324 /* Suoni */; };
 		8B76492E29B5386700C20EE1 /* Vibrazione.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B76492D29B5386700C20EE1 /* Vibrazione.swift */; };
+		8BCF001629B7F9BF000B51B5 /* VirtualPong.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF001529B7F9BF000B51B5 /* VirtualPong.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		8B72EA6129B27FFE00EBE324 /* ParthenoKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ParthenoKit.xcframework; sourceTree = "<group>"; };
 		8B72EA6529B2808800EBE324 /* Suoni */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Suoni; sourceTree = "<group>"; };
 		8B76492D29B5386700C20EE1 /* Vibrazione.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vibrazione.swift; sourceTree = "<group>"; };
+		8BCF001529B7F9BF000B51B5 /* VirtualPong.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = VirtualPong.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 		8B72EA3329B27BC000EBE324 /* VirtualPong Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				8BCF001529B7F9BF000B51B5 /* VirtualPong.mlmodel */,
 				8B06D79829B3A3730092823F /* VirtualPong Watch App.entitlements */,
 				8B76492D29B5386700C20EE1 /* Vibrazione.swift */,
 				8B06D79729B3A36B0092823F /* VirtualPong-Watch-App-Info.plist */,
@@ -331,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BCF001629B7F9BF000B51B5 /* VirtualPong.mlmodel in Sources */,
 				8B72EA5D29B27E9400EBE324 /* RilevamentoColpo.swift in Sources */,
 				8B72EA3729B27BC000EBE324 /* ContentView.swift in Sources */,
 				8B72EA3529B27BC000EBE324 /* VirtualPongApp.swift in Sources */,

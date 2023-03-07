@@ -60,13 +60,12 @@ struct MatchView: View {
                     Text("\(timeRemaining)") // visualizza il tempo rimanente
                         .onReceive(viewModelPong.$colpito, perform: {
                             value in
-                            print("VALUE", value)
                             if !value {
                                 print("Colpito = \(viewModelPong.colpito)")
-                                
                                 print("MOVIMENTO")
                                 //                                queue.async {
                                 if !run {
+                                    run = true
                                     movimento3.startMotionUpdates()
                                 }
                             }
@@ -84,11 +83,11 @@ struct MatchView: View {
                             
                             
                         })
-                    Button("Gioca", action: {
-                        viewModelPong.sendMessage(key: "colpo", value: "rovescio")
-                        viewModelPong.sendMessage(key: "colpito", value: true)
-                    })
-                    
+//                    Button("Gioca", action: {
+//                        viewModelPong.sendMessage(key: "colpo", value: "rovescio")
+//                        viewModelPong.sendMessage(key: "colpito", value: true)
+//                    })
+//
                     //                    }
                     //                                            .onReceive(movimento1.$currentActivity, perform: { value in
                     //                                                if value == "" {
@@ -137,9 +136,12 @@ struct MatchView: View {
                                 colpo = "rovescio"
                             }
                             print("CIAO")
+                            
                             viewModelPong.sendMessage(key: "colpo", value: colpo)
                             viewModelPong.sendMessage(key: "colpito", value: true)
                             viewModelPong.colpito = true
+                            movimento3.stopMotionUpdates()
+                            run = false
                             playSound(sound: "lento", type: "wav")
                             x = 0
                         }

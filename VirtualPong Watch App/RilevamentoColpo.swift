@@ -11,7 +11,7 @@ class Movimento: ObservableObject{
 
     // Creazione dell'oggetto per la predizione di attività
     // let activityClassifier = try? Pong_Test_2(configuration: MLModelConfiguration())
-    let activityClassifier = try? Prova_Pong_4(configuration: MLModelConfiguration())
+    let activityClassifier = try? VirtualPong(configuration: MLModelConfiguration())
 
     // Dichiarazione di un timer globale
     var motionTimer: Timer?
@@ -69,7 +69,7 @@ class Movimento: ObservableObject{
     
     // Funzione per avviare il timer di aggiornamento dei sensori
     func startMotionUpdates() {
-        print("Start motion")
+//        print("Start motion")
         for i in 0..<stateIn.count {
             stateIn[i] = 0.0
         }
@@ -136,7 +136,7 @@ class Movimento: ObservableObject{
         let magnitude = sqrt(pow(accX,2) + pow(accY,2) + pow(accZ,2))
         // print(magnitude)
         
-        if  magnitude < 4.5  {
+        if  magnitude < 4.5 {
             // print("Movimento troppo lento! Hai colpito la rete!")
             stopMotionUpdates()
             self.accelerationArrayX = []
@@ -185,7 +185,7 @@ class Movimento: ObservableObject{
         let prediction = try! model.prediction(acc_x: accelerationX, acc_y: accelerationY, acc_z: accelerationZ,gyro_x: gyroX, gyro_y: gyroY, gyro_z: gyroZ, stateIn: stateIn)
         print("Prediction effettuata")
         stopMotionUpdates()
-        WKInterfaceDevice.current().play(.start)
+//        WKInterfaceDevice.current().play(.start)
         // Aggiornamento della label con l'attività predetta
         currentActivity = prediction.label
         print(prediction.label)
