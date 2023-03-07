@@ -29,6 +29,9 @@ struct ContentView: View {
                 
                 VStack {
                     Spacer()
+//                    NavigationLink(destination: ConnectView(viewModelPong: viewModelPong), label: {
+//                        Text("CONNECT")
+//                    })
                     NavigationLink("", destination: ConnectView(viewModelPong: viewModelPong), isActive: $connect)
                     RoundedButton2(name: "Connect", isActive: $connect)
                     

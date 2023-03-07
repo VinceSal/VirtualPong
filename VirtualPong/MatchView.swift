@@ -113,12 +113,13 @@ struct MatchView: View {
                                     print("codeToShare", codeToShare)
                                     print("forza", forza)
                                     print("colpo", colpo)
+                                    print("maxTime", maxTime, Int(maxTime), Int(maxTime) == 0)
                                     if maxTime > (maxTime/2)-1 && maxTime < (maxTime/2)+1  {
 //                                        isRun = false
                                         forza = "forte"
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "forza", value:forza)
                                         let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "colpo", value:colpo)
-                                    }else if maxTime == 0  {
+                                    } else if Int(maxTime) == 0 {
                                         playSound(sound: "lose", type: "mp3")
 //                                        isRun = false
                                         colpo = "battuta"
@@ -127,7 +128,7 @@ struct MatchView: View {
                                             player2 += 1
                                             let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p2", value:"\(player2)")
                                             
-                                        } else if playerID == 2{
+                                        } else if playerID == 2 {
                                             player1 += 1
                                             let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "p1", value:"\(player1)")
                                         }

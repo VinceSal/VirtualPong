@@ -14,7 +14,7 @@ struct ConnectView: View {
     @ObservedObject var viewModelPong: ViewModelPong
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    let codeToShare = randomString(length: 6).lowercased()
+    @State private var codeToShare: String = "codetoshare"
     
     var sTeam = "TeamC92FKSZ"
     var sTag = ""
@@ -25,6 +25,7 @@ struct ConnectView: View {
     var p = ParthenoKit()
     @State private var start = false
     @State private var join = false
+    @State private var isPlay = false
 
     
     
@@ -64,7 +65,11 @@ struct ConnectView: View {
                     ZStack{
                         RoundedButton(name: codeToShare)
                             .onAppear() {
-                                let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "players", value:"0")
+                                if !isPlay {
+                                    isPlay = true
+                                    codeToShare = randomString(length: 6).lowercased()
+                                    let _ = p.writeSync(team: "TeamC92FKSZ", tag: codeToShare, key: "players", value:"0")
+                                }
                             }
                         Text("\(codeToShare)")
                             .font(.system(size: 38, weight: .bold))
