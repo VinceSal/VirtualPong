@@ -19,7 +19,7 @@ class ViewModelPong: ObservableObject {
     var requests: AnyCancellable?
     var valueModelPong: PassthroughSubject<Value, Never> = PassthroughSubject()
     
-    @Published var colpo = "Paolo"
+    @Published var colpo = ""
     @Published var partita = false
     @Published var player = 0
     @Published var colpito = true

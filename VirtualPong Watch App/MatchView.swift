@@ -133,9 +133,11 @@ struct MatchView: View {
                             if colpo3 == 0.0 {
                                 colpo = "dritto"
                                 playSound(sound: "dritto", type: "mp3")
+                                WKInterfaceDevice.current().play(.start)
                             } else {
                                 colpo = "rovescio"
                                 playSound(sound: "rovescio", type: "mp3")
+                                WKInterfaceDevice.current().play(.notification)
                             }
                             print("CIAO")
                             
